@@ -1,66 +1,303 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QuickCoin BD</title>
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="QuickCoin BD - Gaming Top-Up Store">
+  <title>QuickCoin BD | Game Top-Up</title>
+
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      text-align: center;
+      color: #f8fafc;
+      background: #07111f;
     }
+
     header {
-      background: #111827;
-      padding: 25px 10px;
+      padding: 22px 15px;
+      text-align: center;
+      background: #101d30;
       border-bottom: 2px solid #22c55e;
     }
-    h1 { color: #22c55e; }
-    .card {
-      background: #1e293b;
-      margin: 25px auto;
-      padding: 25px;
-      border-radius: 15px;
-      max-width: 320px;
+
+    header h1 {
+      margin: 0;
+      color: #4ade80;
+      font-size: 30px;
     }
+
+    header p { color: #cbd5e1; }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding: 14px;
+      background: #0b1728;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 16px;
+      background: linear-gradient(140deg, #102b36, #10172b);
+    }
+
+    .hero h2 {
+      font-size: 29px;
+      margin: 5px 0 12px;
+    }
+
+    .hero p {
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
     .btn {
       display: inline-block;
+      padding: 12px 20px;
+      margin-top: 12px;
+      border-radius: 8px;
       background: #22c55e;
       color: #052e16;
-      padding: 12px 22px;
-      border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
+      border: none;
+      cursor: pointer;
     }
-    footer {
-      padding: 20px;
+
+    section {
+      padding: 25px 15px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 22px;
+      color: #4ade80;
+    }
+
+    .games, .packages, .payments {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+    }
+
+    .game, .package, .payment {
+      background: #142238;
+      border: 1px solid #2b3c53;
+      border-radius: 12px;
+      padding: 18px 12px;
+      text-align: center;
+    }
+
+    .game {
+      cursor: pointer;
+      color: white;
+      font-size: 15px;
+    }
+
+    .game.active {
+      border: 2px solid #4ade80;
+      background: #17382f;
+    }
+
+    .game .emoji { font-size: 32px; }
+
+    .package h3 { color: #4ade80; }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #facc15;
+    }
+
+    .note {
+      text-align: center;
       color: #cbd5e1;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .payment { font-weight: bold; }
+
+    .order-box {
+      text-align: center;
+      background: #142238;
+      border-radius: 14px;
+      padding: 25px 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 12px;
+      background: #101d30;
+      color: #cbd5e1;
+      font-size: 13px;
+    }
+
+    footer a { color: #4ade80; }
+
+    @media (max-width: 380px) {
+      header h1 { font-size: 25px; }
+      .hero h2 { font-size: 24px; }
     }
   </style>
 </head>
+
 <body>
+
   <header>
-    <h1>QuickCoin BD</h1>
+    <h1>🪙 QuickCoin BD</h1>
     <p>Your Trusted Gaming Top-Up Store</p>
   </header>
 
-  <main>
-    <div class="card">
-      <h2>🎮 Game Top-Up</h2>
-      <p>দ্রুত ও সহজে আপনার পছন্দের গেম টপ-আপ করুন।</p>
-      <p>আমাদের অফার জানতে Facebook-এ যোগাযোগ করুন।</p>
+  <nav>
+    <a href="#home">হোম</a>
+    <a href="#games">গেমস</a>
+    <a href="#packages">প্যাকেজ</a>
+    <a href="#payment">পেমেন্ট</a>
+    <a href="#order">অর্ডার</a>
+  </nav>
+
+  <div class="hero" id="home">
+    <h2>Level Up Your Game! 🎮</h2>
+    <p>
+      আপনার পছন্দের গেমের টপ-আপ সম্পর্কে জানতে
+      QuickCoin BD-এর সঙ্গে যোগাযোগ করুন।
+    </p>
+    <a class="btn"
+       href="https://www.facebook.com/share/1EkAZi7Qqr/"
+       target="_blank" rel="noopener">
+      Contact on Facebook
+    </a>
+  </div>
+
+  <section id="games">
+    <h2 class="section-title">🎮 আমাদের গেমস</h2>
+
+    <div class="games">
+      <button class="game active" data-game="Free Fire"
+              onclick="selectGame(this)">
+        <div class="emoji">🔥</div>
+        Free Fire
+      </button>
+
+      <button class="game" data-game="PUBG Mobile"
+              onclick="selectGame(this)">
+        <div class="emoji">🎯</div>
+        PUBG Mobile
+      </button>
+
+      <button class="game" data-game="Mobile Legends"
+              onclick="selectGame(this)">
+        <div class="emoji">⚔️</div>
+        Mobile Legends
+      </button>
+
+      <button class="game" data-game="অন্যান্য গেম"
+              onclick="selectGame(this)">
+        <div class="emoji">🎮</div>
+        অন্যান্য গেম
+      </button>
+    </div>
+  </section>
+
+  <section id="packages">
+    <h2 class="section-title">💎 টপ-আপ প্যাকেজ</h2>
+
+    <p class="note">
+      নিচের প্যাকেজগুলো নমুনা। আসল প্যাকেজ ও দাম জানতে
+      Facebook-এ যোগাযোগ করুন।
+    </p>
+
+    <div class="packages">
+      <div class="package">
+        <h3>Starter Pack</h3>
+        <p>ছোট প্যাকেজ</p>
+        <div class="price">দাম জানতে ইনবক্স</div>
+        <a class="btn" href="#order">অর্ডার</a>
+      </div>
+
+      <div class="package">
+        <h3>Popular Pack</h3>
+        <p>জনপ্রিয় প্যাকেজ</p>
+        <div class="price">দাম জানতে ইনবক্স</div>
+        <a class="btn" href="#order">অর্ডার</a>
+      </div>
+
+      <div class="package">
+        <h3>Premium Pack</h3>
+        <p>বড় প্যাকেজ</p>
+        <div class="price">দাম জানতে ইনবক্স</div>
+        <a class="btn" href="#order">অর্ডার</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="payment">
+    <h2 class="section-title">💳 পেমেন্ট পদ্ধতি</h2>
+
+    <div class="payments">
+      <div class="payment">🟣 bKash</div>
+      <div class="payment">🟠 Nagad</div>
+      <div class="payment">🔵 Rocket</div>
+      <div class="payment">🟢 Upay</div>
+    </div>
+
+    <p class="note">
+      পেমেন্ট করার আগে ইনবক্সে সঠিক নম্বর ও মোট টাকা নিশ্চিত করুন।
+      এই ওয়েবসাইটে সরাসরি পেমেন্ট নেওয়া হয় না।
+    </p>
+  </section>
+
+  <section id="order">
+    <div class="order-box">
+      <h2>📩 অর্ডার করতে চান?</h2>
+      <p>আপনার গেম ও প্যাকেজ জানিয়ে Facebook-এ মেসেজ করুন।</p>
+      <p>নির্বাচিত গেম: <strong id="selectedGame">Free Fire</strong></p>
+
       <a class="btn"
-         href="https://www.facebook.com/"
-         target="_blank">
-        Contact on Facebook
+         href="https://www.facebook.com/share/1EkAZi7Qqr/"
+         target="_blank" rel="noopener">
+        Order on Facebook
       </a>
     </div>
-  </main>
+  </section>
 
   <footer>
-    <p>© 2026 QuickCoin BD</p>
+    <p>© 2026 QuickCoin BD. All rights reserved.</p>
+    <p>Gaming Top-Up Store</p>
+    <a href="https://www.facebook.com/share/1EkAZi7Qqr/"
+       target="_blank" rel="noopener">
+      Follow us on Facebook
+    </a>
   </footer>
+
+  <script>
+    function selectGame(button) {
+      document.querySelectorAll('.game').forEach(function(game) {
+        game.classList.remove('active');
+      });
+
+      button.classList.add('active');
+
+      document.getElementById('selectedGame').textContent =
+        button.dataset.game;
+    }
+  </script>
+
 </body>
 </html>
